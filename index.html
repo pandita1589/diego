@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Pantalla de carga -->
+    <div class="pantalla-carga" id="pantallaCarga">
+        <div class="carga-mensaje" id="cargaMensaje">Entrando a la tienda</div>
+        <div class="loader"></div>
+    </div>
+
+    <!-- Panel de selección de género -->
+    <div class="genero-overlay" id="generoOverlay">
+        <div class="genero-panel" id="generoPanel">
+            <h2 class="genero-titulo">¿Con qué género te identificas?</h2>
+            <p>Ayúdanos a personalizar tu experiencia seleccionando una opción</p>
+
+            <div class="genero-opciones">
+                <div class="genero-opcion" data-genero="mujer" onclick="seleccionarGenero('mujer')">
+                    <i class="fas fa-venus genero-icono"></i>
+                    <span class="genero-texto">Mujer</span>
+                </div>
+
+                <div class="genero-opcion" data-genero="hombre" onclick="seleccionarGenero('hombre')">
+                    <i class="fas fa-mars genero-icono"></i>
+                    <span class="genero-texto">Hombre</span>
+                </div>
+
+                <div class="genero-opcion" data-genero="no-binario" onclick="seleccionarGenero('no-binario')">
+                    <i class="fas fa-transgender-alt genero-icono"></i>
+                    <span class="genero-texto">No binario</span>
+                </div>
+            </div>
+
+            <button class="genero-continuar" id="generoContinuar" onclick="continuarNavegacion()">
+                <i class="fas fa-arrow-right"></i> Continuar
+            </button>
+        </div>
+    </div>
+
+    <!-- Pantallas de error -->
+    <div class="error-overlay" id="errorConexion">
+        <i class="fas fa-wifi-slash error-icon"></i>
+        <p class="error-mensaje">No hay conexión a internet. Verifica tu conexión e intenta nuevamente.</p>
+        <button class="error-btn" onclick="recargarPagina()">
+            <i class="fas fa-sync-alt"></i> Reintentar
+        </button>
+    </div>
+
+    <div class="error-overlay" id="error404">
+        <div class="error-codigo">404</div>
+        <p class="error-mensaje">Lo sentimos, la página que buscas no existe o ha sido movida.</p>
+        <button class="error-btn" onclick="window.location.href='/'">
+            <i class="fas fa-home"></i> Ir al inicio
+        </button>
+    </div>
+
+    <div class="error-overlay" id="error500">
+        <div class="error-codigo">500</div>
+        <p class="error-mensaje">Ha ocurrido un error en el servidor. Estamos trabajando para solucionarlo.</p>
+        <button class="error-btn" onclick="recargarPagina()">
+            <i class="fas fa-sync-alt"></i> Reintentar
+        </button>
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-img">
+                    <!-- Aquí puedes colocar tu logo -->
+                    <img src="assets/svg/diego.svg" alt="Logo Tienda">
+                </div>
+                <div class="logo">
+                    <h1>Diego</h1>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-sun" id="themeIcon"></i>
+                <span id="themeText">Modo oscuro</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Carátula de presentación -->
+        <section class="caratula">
+            <h2>Bienvenido a Mi Tienda</h2>
+            <p>Descubre nuestra exclusiva selección de productos de alta calidad a precios increíbles. Diseñados para
+                satisfacer tus necesidades y superar tus expectativas.</p>
+            <a href="#productos" class="btn-explorar">
+                <i class="fas fa-shopping-bag"></i> Explorar productos
+            </a>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <img src="assets/img/home-bg.jpg" alt="">
+        </section>
+
+        <!-- Sección de universidades colaboradoras -->
+        <section class="universidades-seccion">
+            <div class="universidades-titulo">
+                <h2>Universidades de Lima</h2>
+                <p>Colaboramos con las mejores instituciones educativas de la capital</p>
+            </div>
+
+            <div class="universidades-carrusel" id="universidadesCarrusel">
+                <div class="universidades-track">
+                    <!-- Los logos se duplican para crear el efecto continuo -->
+                    <div class="universidad-item" data-id="univ1">
+                        <img src="assets/img/UNMSM_Escudo_y_Nombre.png" alt="Universidad Nacional Mayor de San Marcos">
+                    </div>
+                    <div class="universidad-item" data-id="univ2">
+                        <img src="assets/img/Copia-de-Imagotipo-PUCP-alta_resolucion-1.png"
+                            alt="Pontificia Universidad Católica del Perú">
+                    </div>
+                    <div class="universidad-item" data-id="univ3">
+                        <img src="assets/img/LOGO-UNI.png" alt="Universidad Nacional de Ingeniería">
+                    </div>
+                    <div class="universidad-item" data-id="univ4">
+                        <img src="assets/img/logo.png" alt="Universidad Nacional Agraria La Molina">
+                    </div>
+                    <div class="universidad-item" data-id="univ5">
+                        <img src="assets/img/UNI-lima.png" alt="Universidad de Lima">
+                    </div>
+                    <div class="universidad-item" data-id="univ6">
+                        <img src="assets/img/UniversidadDelPacifico.png" alt="Universidad del Pacífico">
+                    </div>
+                    <div class="universidad-item" data-id="univ7">
+                        <img src="assets/img/logo-urp.png" alt="Universidad Ricardo Palma">
+                    </div>
+                    <div class="universidad-item" data-id="univ8">
+                        <img src="assets/img/logo-upch.png" alt="Universidad Peruana Cayetano Heredia">
+                    </div>
+                    <div class="universidad-item" data-id="univ9">
+                        <img src="assets/img/Escudo_UNFV.png" alt="Universidad Nacional Federico Villarreal">
+                    </div>
+                    <div class="universidad-item" data-id="univ10">
+                        <img src="assets/img/Logos-Usil-nuevo.png" alt="Universidad San Ignacio de Loyola">
+                    </div>
+                    <div class="universidad-item" data-id="univ11">
+                        <img src="assets/img/Logo_USMP_Derecho.png" alt="Universidad de San Martín de Porres">
+                    </div>
+                    <div class="universidad-item" data-id="univ12">
+                        <img src="assets/img/logo-universidad-cientifica-del-sur-peru.png"
+                            alt="Universidad Científica del Sur">
+                    </div>
+                    <div class="universidad-item" data-id="univ13">
+                        <img src="assets/img/Logo-de-la-Universidad-Nacional-Tecnologica-de-Lima-Sur-UNTELS.png"
+                            alt="Universidad Nacional Tecnológica de Lima Sur">
+                    </div>
+                    <div class="universidad-item" data-id="univ14">
+                        <img src="assets/img/upn-logo-png-fondo-blanco.png" alt="Universidad Privada del Norte">
+                    </div>
+                    <div class="universidad-item" data-id="univ15">
+                        <img src="assets/img/imagen.png" alt="Universidad Autónoma del Perú">
+                    </div>
+                    <div class="universidad-item" data-id="univ16">
+                        <img src="assets/img/ESAN-300x300.png" alt="Universidad ESAN">
+                    </div>
+                    <div class="universidad-item" data-id="univ17">
+                        <img src="assets/img/logo_tup.png" alt="Universidad Tecnológica del Perú">
+                    </div>
+
+                    <!-- Duplicados para el efecto continuo -->
+                    <div class="universidad-item" data-id="univ1">
+                        <img src="assets/img/UNMSM_Escudo_y_Nombre.png" alt="Universidad Nacional Mayor de San Marcos">
+                    </div>
+                    <div class="universidad-item" data-id="univ2">
+                        <img src="assets/img/Copia-de-Imagotipo-PUCP-alta_resolucion-1.png"
+                            alt="Pontificia Universidad Católica del Perú">
+                    </div>
+                    <div class="universidad-item" data-id="univ3">
+                        <img src="assets/img/LOGO-UNI.png" alt="Universidad Nacional de Ingeniería">
+                    </div>
+                    <div class="universidad-item" data-id="univ4">
+                        <img src="assets/img/logo.png" alt="Universidad Nacional Agraria La Molina">
+                    </div>
+                    <div class="universidad-item" data-id="univ5">
+                        <img src="assets/img/UNI-lima.png" alt="Universidad de Lima">
+                    </div>
+                    <div class="universidad-item" data-id="univ6">
+                        <img src="assets/img/UniversidadDelPacifico.png" alt="Universidad del Pacífico">
+                    </div>
+                    <div class="universidad-item" data-id="univ7">
+                        <img src="assets/img/logo-urp.png" alt="Universidad Ricardo Palma">
+                    </div>
+                    <div class="universidad-item" data-id="univ8">
+                        <img src="assets/img/logo-upch.png" alt="Universidad Peruana Cayetano Heredia">
+                    </div>
+                    <div class="universidad-item" data-id="univ9">
+                        <img src="assets/img/Escudo_UNFV.png" alt="Universidad Nacional Federico Villarreal">
+                    </div>
+                    <div class="universidad-item" data-id="univ10">
+                        <img src="assets/img/Logos-Usil-nuevo.png" alt="Universidad San Ignacio de Loyola">
+                    </div>
+                    <div class="universidad-item" data-id="univ11">
+                        <img src="assets/img/Logo_USMP_Derecho.png" alt="Universidad de San Martín de Porres">
+                    </div>
+                    <div class="universidad-item" data-id="univ12">
+                        <img src="assets/img/logo-universidad-cientifica-del-sur-peru.png"
+                            alt="Universidad Científica del Sur">
+                    </div>
+                    <div class="universidad-item" data-id="univ13">
+                        <img src="assets/img/Logo-de-la-Universidad-Nacional-Tecnologica-de-Lima-Sur-UNTELS.png"
+                            alt="Universidad Nacional Tecnológica de Lima Sur">
+                    </div>
+                    <div class="universidad-item" data-id="univ14">
+                        <img src="assets/img/upn-logo-png-fondo-blanco.png" alt="Universidad Privada del Norte">
+                    </div>
+                    <div class="universidad-item" data-id="univ15">
+                        <img src="assets/img/imagen.png" alt="Universidad Autónoma del Perú">
+                    </div>
+                    <div class="universidad-item" data-id="univ16">
+                        <img src="assets/img/ESAN-300x300.png" alt="Universidad ESAN">
+                    </div>
+                    <div class="universidad-item" data-id="univ17">
+                        <img src="assets/img/logo_tup.png" alt="Universidad Tecnológica del Perú">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para información de universidades -->
+        <div class="universidad-modal" id="universidadModal">
+            <div class="universidad-modal-contenido">
+                <button class="cerrar-universidad-modal" id="cerrarUniversidadModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="universidad-modal-header">
+                    <img id="universidadLogo" src="" alt="Logo Universidad">
+                    <h2 id="universidadNombre"></h2>
+                </div>
+                <div class="universidad-modal-body">
+                    <div class="universidad-info-grid">
+                        <div class="universidad-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Ubicación</h3>
+                            <p id="universidadUbicacion"></p>
+                        </div>
+                        <div class="universidad-info-item">
+                            <i class="fas fa-globe-americas"></i>
+                            <h3>País</h3>
+                            <p id="universidadPais"></p>
+                        </div>
+                        <div class="universidad-info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Fundación</h3>
+                            <p id="universidadFundacion"></p>
+                        </div>
+                        <div class="universidad-info-item">
+                            <i class="fas fa-users"></i>
+                            <h3>Estudiantes</h3>
+                            <p id="universidadEstudiantes"></p>
+                        </div>
+                    </div>
+                    <div class="universidad-historia">
+                        <h3>Historia</h3>
+                        <p id="universidadHistoria"></p>
+                    </div>
+                    <div class="universidad-logros">
+                        <h3>Logros Destacados</h3>
+                        <ul id="universidadLogros"></ul>
+                    </div>
+                </div>
+                <div class="universidad-modal-footer">
+                    <a href="#" id="universidadSitioWeb" target="_blank" class="btn-universidad-web">
+                        <i class="fas fa-external-link-alt"></i> Visitar sitio web
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <section id="productos" class="seccion-productos">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <h2>Nuestros Productos</h2>
+                </div>
+                <div class="productos-grid">
+                    <!-- Producto de tarea individual -->
+                    <div class="producto">
+                        <div class="producto-img">
+                            <span>Imagen Producto 1</span>
+                            <img src="assets/img/premium_photo-1661333596510-33d60b54ad80.jpg" alt="">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Tarea Individual</h3>
+                            <span class="producto-tipo">Desarrollo personalizado para ti</span>
+                            <p>Te brindo tareas individuales con buena información adaptada a tus necesidades
+                                específicas.</p>
+                            <span class="precio">S/. 20</span>
+                            <button class="btn-comprar" onclick="mostrarFormulario('Tarea Individual', 'S/. 20')">
+                                <i class="fas fa-shopping-cart"></i> Comprar ahora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto de tarea grupal -->
+                    <div class="producto tarea-grupal">
+                        <div class="producto-img">
+                            <span>Imagen Producto 2</span>
+                            <img src="assets/img/estudiar-en-grupo-examenes.jpg" alt="">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Tarea Grupal</h3>
+                            <span class="producto-tipo">Colaboración para equipos</span>
+                            <p>Soluciones para trabajos en equipo con material completo y adaptado para grupos.</p>
+                            <span class="precio">S/. 60</span>
+                            <button class="btn-comprar" onclick="mostrarFormulario('Tarea Grupal', 'S/. 60')">
+                                <i class="fas fa-shopping-cart"></i> Comprar ahora
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay y formulario -->
+    <div class="overlay" id="overlay">
+        <div class="formulario" id="formulario">
+            <button class="cerrar-formulario" onclick="cerrarFormulario()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Completa tus datos</h2>
+            <div class="form-group">
+                <label for="producto-seleccionado">Producto:</label>
+                <input type="text" id="producto-seleccionado" readonly>
+            </div>
+            <div class="form-group">
+                <label for="precio-producto">Precio:</label>
+                <input type="text" id="precio-producto" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Tu nombre:</label>
+                <input type="text" id="nombre" placeholder="Escribe tu nombre completo">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" placeholder="Tu número de teléfono">
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección de entrega:</label>
+                <input type="text" id="direccion" placeholder="Tu dirección completa">
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" placeholder="¿Cuántas unidades?" min="1" value="1">
+            </div>
+            <button class="btn-enviar" onclick="enviarWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p class="copyright">&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js" defer></script>
