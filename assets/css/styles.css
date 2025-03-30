@@ -1,4 +1,4 @@
-/* Estilos generales - optimizados */
+/* Estilos generales */
 :root {
     /* Esquema de colores clásico corporativo para tema claro */
     --color-primary: #1a1a1a;
@@ -15,15 +15,12 @@
     --scrollbar-track: #f1f1f1;
     --scrollbar-thumb: #c0c0c0;
     --scrollbar-thumb-hover: #a0a0a0;
-    /* Variables adicionales para animaciones */
-    --animation-duration: 0.3s;
-    --animation-timing: ease;
 }
 
 .dark-theme {
     /* Esquema de colores clásico corporativo para tema oscuro */
     --color-primary: #000000;
-    --color-primary-dark: #0d0d0d; /* Mejorado para mayor contraste */
+    --color-primary-dark: #1a1a1a;
     --color-accent: #d63031;
     --color-accent-dark: #b71c1c;
     --color-background: #121212;
@@ -42,8 +39,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    word-wrap: break-word; /* Evita desbordamientos de texto */
-    overflow-wrap: break-word;
 }
 
 body {
@@ -54,19 +49,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: background-color var(--animation-duration) var(--animation-timing), 
-                color var(--animation-duration) var(--animation-timing);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main {
     flex: 1;
 }
 
-/* Estilos para el scroll suave cuando se hace clic en el botón - con opción para reducir movimiento */
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
+/* Estilos para el scroll suave cuando se hace clic en el botón */
+html {
+    scroll-behavior: smooth;
 }
 
 /* Scrollbar personalizada */
@@ -89,7 +81,7 @@ main {
     background: var(--scrollbar-thumb-hover);
 }
 
-/* Pantalla de carga - corregida */
+/* Pantalla de carga */
 .pantalla-carga {
     position: fixed;
     top: 0;
@@ -102,12 +94,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-}
-
-.pantalla-carga.oculta {
-    opacity: 0;
-    visibility: hidden;
+    transition: opacity 0.5s ease-out;
 }
 
 .carga-mensaje {
@@ -135,7 +122,7 @@ main {
     margin-bottom: 20px;
 }
 
-/* Estados de error - mejorados */
+/* Estados de error */
 .error-overlay {
     position: fixed;
     top: 0;
@@ -150,10 +137,6 @@ main {
     z-index: 2000;
     padding: 20px;
     text-align: center;
-}
-
-.error-overlay.visible {
-    display: flex;
 }
 
 .error-icon {
@@ -183,7 +166,7 @@ main {
     border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s;
     font-weight: 500;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -194,7 +177,7 @@ main {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Encabezado - corregido */
+/* Encabezado */
 header {
     background-color: var(--color-primary);
     color: white;
@@ -258,8 +241,7 @@ header {
     align-items: center;
     gap: 8px;
     font-size: 0.9rem;
-    transition: background-color var(--animation-duration) var(--animation-timing),
-                transform var(--animation-duration) var(--animation-timing);
+    transition: background-color 0.3s;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -272,7 +254,7 @@ header {
     font-size: 1.1rem;
 }
 
-/* Carátula de presentación - mejorada */
+/* Carátula de presentación */
 .caratula {
     height: 100vh;
     display: flex;
@@ -284,7 +266,6 @@ header {
     color: white;
     position: relative;
     overflow: hidden;
-    margin-top: 0; /* Ajuste para compensar el header fijo */
 }
 
 .caratula img {
@@ -305,7 +286,7 @@ header {
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
-    z-index: -1; /* Overlay sobre la imagen pero debajo del contenido */
+    z-index: -1; /* Asegura que el overlay esté sobre la imagen pero debajo del contenido */
 }
 
 .caratula h2 {
@@ -329,35 +310,6 @@ header {
     z-index: 1;
 }
 
-/* Controles de animación para reducir movimiento */
-@media (prefers-reduced-motion: reduce) {
-    .btn-explorar {
-        animation: none !important;
-    }
-    
-    .scroll-indicator {
-        animation: none !important;
-    }
-    
-    .universidad-item:hover {
-        transform: none !important;
-    }
-    
-    .btn-comprar:hover, .btn-enviar:hover, .error-btn:hover, .btn-universidad-web:hover {
-        transform: none !important;
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .btn-explorar {
-        animation: floatingButton 3s ease-in-out infinite;
-    }
-    
-    .scroll-indicator {
-        animation: bounce 2s infinite;
-    }
-}
-
 .btn-explorar {
     background-color: var(--color-accent);
     color: white;
@@ -374,9 +326,7 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 1;
-    transition: background-color var(--animation-duration) var(--animation-timing),
-                transform var(--animation-duration) var(--animation-timing),
-                box-shadow var(--animation-duration) var(--animation-timing);
+    animation: floatingButton 3s ease-in-out infinite;
 }
 
 .btn-explorar:hover {
@@ -390,21 +340,17 @@ header {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
+    animation: bounce 2s infinite;
     color: white;
     font-size: 1.5rem;
     z-index: 1;
 }
 
-/* Contenedor principal - con ajustes para el header fijo */
+/* Contenedor principal */
 .contenedor {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px 40px;
-}
-
-/* Ajuste para compensar el header fijo */
-section {
-    scroll-margin-top: 100px;
+    padding: 40px 20px 40px; /* Padding superior reducido */
 }
 
 /* Estilos para secciones y títulos */
@@ -434,35 +380,32 @@ section {
     background-color: var(--color-accent);
 }
 
-/* Sección de productos - mejorada grid responsiva */
+/* Sección de productos */
+/* Sección de productos */
 .seccion-productos {
-    padding-top: 30px;
-    scroll-margin-top: 100px;
-    margin-top: 10px;
+    padding-top: 30px; /* Aumentado para mejor separación */
+    scroll-margin-top: 100px; /* Ajustado para evitar que el header fijo lo cubra */
+    margin-top: 10px; /* Pequeño margen para separación */
 }
 
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* Cambiado para mejor centrado de pocos elementos */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 2rem;
+    /* Ajuste completo para centrado */
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Para cuando hay pocos productos - mejorado */
+/* Para cuando hay pocos productos */
 @media (min-width: 992px) {
     .productos-grid {
-        /* Usando auto-fill para distribución más consistente */
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        justify-content: center;
-    }
-    
-    /* Para casos con 3 o menos productos */
-    .productos-grid.pocos-productos {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+        /* Esta combinación funciona mejor para centrar pocos elementos */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
         justify-content: center;
     }
 }
@@ -472,8 +415,7 @@ section {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform var(--animation-duration) var(--animation-timing), 
-                box-shadow var(--animation-duration) var(--animation-timing);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     height: 100%; /* Asegura altura uniforme */
     display: flex;
@@ -551,7 +493,7 @@ section {
     border-radius: 30px;
     cursor: pointer;
     font-size: 1rem;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s ease;
     display: inline-flex;
     width: 100%;
     align-items: center;
@@ -569,16 +511,13 @@ section {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Unificando estilos para tareas especiales */
-.producto.tarea-especial, 
-.producto.tarea-grupal, 
-.producto.investigación-grupal {
+/* Estilos para tareas grupales */
+.producto.tarea-grupal {
     border: 2px solid var(--color-accent);
 }
 
-.producto.tarea-especial::before,
-.producto.tarea-grupal::before,
-.producto.investigación-grupal::before {
+.producto.tarea-grupal::before {
+    content: "Tarea Grupal";
     position: absolute;
     top: 10px;
     right: 10px;
@@ -593,19 +532,33 @@ section {
     white-space: nowrap; /* Evita saltos de línea */
 }
 
-.dark-theme .producto.tarea-especial::before,
-.dark-theme .producto.tarea-grupal::before,
-.dark-theme .producto.investigación-grupal::before {
+.dark-theme .producto.tarea-grupal::before {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* Contenido específico para cada tipo de tarea */
-.producto.tarea-grupal::before {
-    content: "Tarea Grupal";
+/*Estilos para investigacion grupal*/
+.producto.investigación-grupal {
+    border: 2px solid var(--color-accent);
 }
 
 .producto.investigación-grupal::before {
     content: "Investigación Grande";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 3; /* Aumentado para garantizar visibilidad */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: nowrap; /* Evita saltos de línea */
+}
+
+.dark-theme .producto.investigación-grupal::before {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* Descripción para tareas */
@@ -616,7 +569,7 @@ section {
     display: block;
 }
 
-/* Formulario - mejorado */
+/* Formulario */
 .overlay {
     position: fixed;
     top: 0;
@@ -628,13 +581,6 @@ section {
     justify-content: center;
     align-items: center;
     z-index: 200;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.overlay.visible {
-    display: flex;
-    opacity: 1;
 }
 
 .formulario {
@@ -647,14 +593,6 @@ section {
     position: relative;
     max-height: 80vh;
     overflow-y: auto;
-    transform: translateY(30px);
-    opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.overlay.visible .formulario {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 /* Scrollbar personalizada del formulario */
@@ -685,8 +623,7 @@ section {
     border: none;
     color: var(--color-text-secondary);
     cursor: pointer;
-    transition: color var(--animation-duration) var(--animation-timing), 
-                background-color var(--animation-duration) var(--animation-timing);
+    transition: color 0.3s;
     width: 30px;
     height: 30px;
     display: flex;
@@ -701,7 +638,7 @@ section {
 }
 
 .formulario h2 {
-    color: var(--color-text);
+    color: var(--color-primary);
     margin-bottom: 25px;
     text-align: center;
     font-weight: 600;
@@ -728,8 +665,7 @@ section {
     font-size: 1rem;
     background-color: var(--color-card);
     color: var(--color-text);
-    transition: border-color var(--animation-duration) var(--animation-timing),
-                box-shadow var(--animation-duration) var(--animation-timing);
+    transition: border-color 0.3s;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -749,7 +685,7 @@ section {
     font-size: 1.1rem;
     width: 100%;
     margin-top: 10px;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -765,9 +701,9 @@ section {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Sección de universidades - mejorada */
+/* Sección de universidades */
 .universidades-seccion {
-    padding: 15px 0;
+    padding: 30px 0; /* Espacio vertical reducido */
     background-color: var(--color-background);
     overflow: hidden;
     position: relative;
@@ -776,7 +712,7 @@ section {
 
 .universidades-titulo {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .universidades-titulo h2 {
@@ -805,42 +741,50 @@ section {
     margin: 0 auto;
 }
 
-/* Carrusel de universidades - mejorado */
+/* Carrusel de universidades */
 .universidades-carrusel {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: 130px; /* Altura aumentada */
     overflow: hidden;
-    margin: 10px 0;
-}
-
-/* Pausar animaciones si el usuario prefiere reducir movimiento */
-@media (prefers-reduced-motion: reduce) {
-    .universidades-track {
-        animation: none !important;
-    }
+    margin: 20px 0;
 }
 
 .universidades-track {
     display: flex;
     align-items: center;
-    position: relative;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .universidades-track {
-        /* Usa variables para el cálculo dinámico del ancho */
-        --item-width: 250px;
-        --item-count: 17;
-        width: calc(var(--item-width) * var(--item-count) * 2);
-        animation: scroll 60s linear infinite;
-    }
+    width: calc(250px * 34); /* Ancho ajustado para logos más grandes */
+    animation: scroll 60s linear infinite;
 }
 
 .universidades-track:hover {
     animation-play-state: paused;
 }
 
+/* Reducir espaciado vertical de la sección de universidades */
+.universidades-seccion {
+    padding: 15px 0; /* Reducido de 30px a 15px */
+    margin-bottom: 0;
+    background-color: var(--color-background);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Reducir margen del carrusel */
+.universidades-carrusel {
+    position: relative;
+    width: 100%;
+    height: 120px; /* Ligeramente reducido */
+    overflow: hidden;
+    margin: 10px 0; /* Reducido de 20px a 10px */
+}
+
+/* Ajustar título para menos espacio */
+.universidades-titulo {
+    margin-bottom: 10px; /* Reducido de 20px */
+}
+
+/* Mantener los items de universidad como están */
 .universidad-item {
     flex: 0 0 auto;
     width: 220px;
@@ -853,13 +797,12 @@ section {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s ease;
     padding: 10px;
     border: 1px solid #e0e0e0;
 }
 
 .dark-theme .universidad-item {
-    background-color: var(--color-card);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border: 1px solid #333333;
 }
@@ -876,7 +819,12 @@ section {
     object-fit: contain;
 }
 
-/* Modal de universidad - mejorado */
+/* Ajustar sección siguiente para estar más cerca */
+.seccion-productos {
+    padding-top: 15px; /* Reducido aún más */
+    margin-top: 0;
+}
+/* Modal de universidad */
 .universidad-modal {
     position: fixed;
     top: 0;
@@ -917,25 +865,6 @@ section {
     opacity: 1;
 }
 
-/* Scrollbar personalizada del modal */
-.universidad-modal-contenido::-webkit-scrollbar {
-    width: 8px;
-}
-
-.universidad-modal-contenido::-webkit-scrollbar-track {
-    background: var(--scrollbar-track);
-    border-radius: 10px;
-}
-
-.universidad-modal-contenido::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb);
-    border-radius: 10px;
-}
-
-.universidad-modal-contenido::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-thumb-hover);
-}
-
 .cerrar-universidad-modal {
     position: absolute;
     top: 15px;
@@ -951,7 +880,7 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s;
     z-index: 10;
 }
 
@@ -1069,7 +998,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s;
     font-weight: 500;
 }
 
@@ -1107,7 +1036,7 @@ footer {
     text-decoration: none;
     font-size: 0.9rem;
     opacity: 0.8;
-    transition: opacity var(--animation-duration) var(--animation-timing);
+    transition: opacity 0.3s;
 }
 
 .footer-links a:hover {
@@ -1128,7 +1057,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s;
 }
 
 .social-icon:hover {
@@ -1141,7 +1070,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Estilos para el panel de selección de género - mejorado */
+/* Estilos para el panel de selección de género */
 .genero-overlay {
     position: fixed;
     top: 0;
@@ -1186,7 +1115,7 @@ footer {
 }
 
 .genero-titulo {
-    color: var(--color-text);
+    color: var(--color-primary);
     font-size: 2rem;
     margin-bottom: 25px;
     font-weight: 600;
@@ -1206,7 +1135,7 @@ footer {
     border: 2px solid var(--color-border);
     border-radius: 10px;
     cursor: pointer;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1243,7 +1172,7 @@ footer {
     border-radius: 30px;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.3s;
     font-weight: 500;
     display: inline-flex;
     align-items: center;
@@ -1263,28 +1192,7 @@ footer {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Lista de productos */
-.producto-lista {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 20px;
-}
-
-.producto-lista li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.producto-lista li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-}
-
-/* Animaciones - optimizadas */
+/* Animaciones */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -1309,7 +1217,7 @@ footer {
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Optimizado para evitar cálculos hardcodeados */
+    100% { transform: translateX(calc(-250px * 17)); }
 }
 
 @keyframes pulse {
@@ -1318,7 +1226,7 @@ footer {
     100% { transform: scale(1); }
 }
 
-/* Responsive - mejorado */
+/* Responsive */
 @media (min-width: 480px) {
     .genero-opciones {
         flex-direction: row;
@@ -1327,24 +1235,10 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+    .productos-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .logo-img {
-        height: 60px; /* Reducido para móviles */
-    }
-    
-    .logo h1 {
-        font-size: 1.8rem; /* Reducido para móviles */
-    }
-    
-    .theme-toggle {
-        margin-top: 5px;
-    }
-    
+
     .caratula h2 {
         font-size: 2.2rem;
     }
@@ -1352,18 +1246,11 @@ footer {
     .caratula p {
         font-size: 1rem;
     }
-    
-    .btn-explorar {
-        padding: 12px 25px; /* Reducido para móviles */
-        font-size: 1rem;
-    }
 
-    .seccion-titulo h2 {
-        font-size: 1.8rem; /* Reducido para móviles */
-    }
-    
-    .productos-grid {
-        grid-template-columns: 1fr;
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
     }
 
     .footer-links {
@@ -1385,214 +1272,30 @@ footer {
     .universidad-info-grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
-
-    /* Asegurar que overlays cubran toda la pantalla en móviles */
-    .pantalla-carga, .overlay, .universidad-modal, .genero-overlay {
-        position: fixed; /* Fijado para dispositivos iOS */
-        height: 100%;
-    }
 }
 
 @media (max-width: 480px) {
     .universidad-info-grid {
         grid-template-columns: 1fr 1fr;
     }
-    
-    .seccion-titulo h2 {
-        font-size: 1.6rem; /* Aún más reducido para móviles pequeños */
-    }
-    
-    .caratula h2 {
-        font-size: 1.8rem; /* Aún más reducido para móviles pequeños */
-    }
-    
-    .productos-grid {
-        gap: 20px; /* Reducido para móviles pequeños */
-    }
-    
-    .producto-img {
-        height: 180px; /* Reducido para móviles pequeños */
-    }
-    
-    .producto h3 {
-        font-size: 1.3rem; /* Reducido para móviles pequeños */
-    }
 }
 
-/* Arreglo para la pantalla de carga en iOS */
-@supports (-webkit-touch-callout: none) {
-    .pantalla-carga, .overlay, .universidad-modal, .genero-overlay {
-        position: fixed;
-        height: -webkit-fill-available;
-    }
+.producto-lista {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
 }
 
-/* Arreglos para el header fijo */
-body {
-    padding-top: 90px; /* Espacio para el header fijo */
-}
-
-@media (max-width: 768px) {
-    body {
-        padding-top: 120px; /* Mayor espacio para header en móvil (cuando se apila) */
-    }
-}
-
-/* Arreglo para problemas de visualización en Safari */
-@supports (not (gap: 20px)) {
-    .productos-grid, .universidad-info-grid, .genero-opciones {
-        margin: -10px;
-    }
-    
-    .producto, .universidad-info-item, .genero-opcion {
-        margin: 10px;
-    }
-}
-
-/* Arreglo para alta densidad de píxeles */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .producto-img img,
-    .universidad-item img,
-    .universidad-modal-header img {
-        image-rendering: -webkit-optimize-contrast;
-    }
-}
-
-/* Arreglo para transiciones lentas en dispositivos de bajo rendimiento */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* Arreglo para asegurar contraste adecuado */
-.dark-theme .producto-info {
-    background-color: #1a1a1a; /* Un poco más claro para mejor legibilidad */
-}
-
-.dark-theme .producto-lista li::before {
-    color: #e74c3c; /* Color más vivo para el bullet en modo oscuro */
-}
-
-/* Arreglo para eventos táctiles */
-@media (hover: none) {
-    .btn-comprar:active,
-    .btn-explorar:active,
-    .btn-enviar:active,
-    .btn-universidad-web:active,
-    .genero-continuar.activo:active,
-    .universidad-item:active {
-        transform: scale(0.98);
-    }
-}
-
-/* Arreglos para carrusel de universidades */
-.universidades-track {
-    transform: translateZ(0); /* Forzar aceleración GPU */
-    will-change: transform; /* Mejora rendimiento durante animación */
-}
-
-/* Arreglo para problemas de foco */
-.btn-comprar:focus,
-.btn-explorar:focus,
-.btn-enviar:focus,
-.form-group input:focus,
-.cerrar-formulario:focus,
-.cerrar-universidad-modal:focus,
-.theme-toggle:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-}
-
-/* Accesibilidad mejorada */
-.producto-tipo, .precio {
-    font-weight: 500; /* Mejor legibilidad */
-}
-
-.dark-theme .producto-tipo, 
-.dark-theme .producto p,
-.dark-theme .precio {
-    color: rgba(255, 255, 255, 0.9); /* Mayor contraste en tema oscuro */
-}
-
-/* Corrección para z-index */
-.header-content {
+.producto-lista li {
     position: relative;
-    z-index: 1;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-/* Arreglar problema de botón comprar en iOS */
-.btn-comprar, .btn-enviar, .btn-explorar, .btn-universidad-web, .genero-continuar {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-/* Arreglo para problemas de renderizado del texto */
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-/* Arreglo para mantener proporción consistente en imágenes */
-.producto-img {
-    position: relative;
-}
-
-.producto-img::before {
-    content: "";
-    display: block;
-    padding-top: 56.25%; /* Mantiene proporción 16:9 */
-}
-
-.producto-img img, .producto-img span {
+.producto-lista li::before {
+    content: "•"; /* O puedes usar "-" */
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Ajuste para el carrusel de universidades */
-.universidades-seccion {
-    overflow: hidden; /* Importante para evitar scroll horizontal */
-}
-
-/* Arreglo para interacciones con teclado */
-.universidad-item:focus-visible,
-.btn-comprar:focus-visible,
-.btn-explorar:focus-visible,
-.btn-enviar:focus-visible,
-.genero-opcion:focus-visible {
-    outline: 3px solid var(--color-accent);
-    outline-offset: 3px;
-}
-
-/* Arreglo para evitar text overflow */
-.producto h3, 
-.universidad-modal-header h2,
-.genero-titulo {
-    overflow-wrap: break-word;
-    hyphens: auto;
-}
-
-/* Arreglo para pantallas muy pequeñas */
-@media (max-width: 350px) {
-    .btn-explorar {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    .caratula h2 {
-        font-size: 1.6rem;
-    }
-    
-    .producto-img {
-        height: 160px;
-    }
+    color: var(--color-accent); /* Usa el color de acento para los puntos */
 }
