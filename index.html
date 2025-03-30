@@ -100,22 +100,20 @@
         <!-- Carátula de presentación -->
         <section class="caratula">
             <h2>Bienvenido a Mi Tienda</h2>
-            <p>Descubre nuestra exclusiva selección de productos de alta calidad a precios increíbles. Diseñados para
-                satisfacer tus necesidades y superar tus expectativas.</p>
+            <p>Te presento mis servicios para tu vida universitaria, espero que te interese algo de mis precios.</p>
             <a href="#productos" class="btn-explorar">
                 <i class="fas fa-shopping-bag"></i> Explorar productos
             </a>
             <div class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </div>
-            <img src="assets/img/home-bg.jpg" alt="">
+            <img src="assets/img/back-view-of-man-presenting-to-students-at-a-lecture-picture-id607927560.jpg" alt="">
         </section>
 
         <!-- Sección de universidades colaboradoras -->
         <section class="universidades-seccion">
             <div class="universidades-titulo">
                 <h2>Universidades de Lima</h2>
-                <p>Colaboramos con las mejores instituciones educativas de la capital</p>
             </div>
 
             <div class="universidades-carrusel" id="universidadesCarrusel">
@@ -303,6 +301,12 @@
                             <span class="producto-tipo">Desarrollo personalizado para ti</span>
                             <p>Te brindo tareas individuales con buena información adaptada a tus necesidades
                                 específicas.</p>
+                                <ul class="producto-lista">
+                                    <li>Cursos Individuales</li>
+                                    <li>Practicas</li>
+                                    <li>Ejercicios</li>
+                                    <li>Etc.</li>
+                                </ul>
                             <span class="precio">S/. 20</span>
                             <button class="btn-comprar" onclick="mostrarFormulario('Tarea Individual', 'S/. 20')">
                                 <i class="fas fa-shopping-cart"></i> Comprar ahora
@@ -320,8 +324,59 @@
                             <h3>Tarea Grupal</h3>
                             <span class="producto-tipo">Colaboración para equipos</span>
                             <p>Soluciones para trabajos en equipo con material completo y adaptado para grupos.</p>
+                            <ul class="producto-lista">
+                                <li>Exposición</li>
+                                <li>Diapositivas</li>
+                                <li>Tripticos</li>
+                                <li>Informes</li>
+                            </ul>
                             <span class="precio">S/. 60</span>
                             <button class="btn-comprar" onclick="mostrarFormulario('Tarea Grupal', 'S/. 60')">
+                                <i class="fas fa-shopping-cart"></i> Comprar ahora
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-img">
+                            <span>Imagen Producto 3</span>
+                            <img src="assets/img/4571baf8-fb4a-4e5a-9f0d-5959550a84b0.jpg" alt="">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Investigación Pequeña</h3>
+                            <span class="producto-tipo">Colaboración para una investigación pequeña, brinda:</span>
+                            <p>Esta sección solo te brinda:</p>
+                            <ul class="producto-lista">
+                                <li>Monografías</li>
+                                <li>Ensayo</li>
+                                <li>Artículo</li>
+                                <li>Estudio de Caso</li>
+                            </ul>
+                            <span class="precio">S/. 80</span>
+                            <button class="btn-comprar" onclick="mostrarFormulario('Investigación', 'S/. 80')">
+                                <i class="fas fa-shopping-cart"></i> Comprar ahora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Producto de tarea grupal -->
+                    <div class="producto investigación-grupal">
+                        <div class="producto-img">
+                            <span>Imagen Producto 4</span>
+                            <img src="assets/img/Delphos-1024x495.jpg" alt="">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Investigación Grande</h3>
+                            <span class="producto-tipo">Colaboración para investigación grande</span>
+                            <p>Te brindamos investigaciones grandes.</p>
+                            <ul class="producto-lista">
+                                <li>Proyecto Final</li>
+                                <li>Examen Final</li>
+                                <li>Descubrimientos</li>
+                                <li>Etc.</li>
+                            </ul>
+                            <span class="precio">S/. 100</span>
+                            <button class="btn-comprar" onclick="mostrarFormulario('Investigación Grande', 'S/. 100')">
                                 <i class="fas fa-shopping-cart"></i> Comprar ahora
                             </button>
                         </div>
@@ -354,10 +409,6 @@
             <div class="form-group">
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" id="telefono" placeholder="Tu número de teléfono">
-            </div>
-            <div class="form-group">
-                <label for="direccion">Dirección de entrega:</label>
-                <input type="text" id="direccion" placeholder="Tu dirección completa">
             </div>
             <div class="form-group">
                 <label for="cantidad">Cantidad:</label>

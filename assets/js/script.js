@@ -216,12 +216,11 @@ function enviarWhatsApp() {
     // Aquí va la lógica para enviar el pedido por WhatsApp
     const nombre = document.getElementById('nombre').value;
     const telefono = document.getElementById('telefono').value;
-    const direccion = document.getElementById('direccion').value;
     const producto = document.getElementById('producto-seleccionado').value;
     const precio = document.getElementById('precio-producto').value;
     const cantidad = document.getElementById('cantidad').value;
     
-    if (!nombre || !telefono || !direccion) {
+    if (!nombre || !telefono) {
         alert('Por favor completa todos los campos');
         return;
     }
@@ -235,7 +234,6 @@ function enviarWhatsApp() {
     mensaje += `*Datos de entrega:*\n`;
     mensaje += `*Nombre:* ${nombre}\n`;
     mensaje += `*Teléfono:* ${telefono}\n`;
-    mensaje += `*Dirección:* ${direccion}`;
     
     // Codificar mensaje para URL
     const mensajeCodificado = encodeURIComponent(mensaje);
